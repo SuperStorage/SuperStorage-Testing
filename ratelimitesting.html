@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+        <title>Superstorage-Testing</title>
+    </head>
+    <body>
+        <center>
+            <h1>Rate-Limit Testing</h1>
+            <em id="info"></em>
+            <button id="btn">test</button>
+        </center>   
+    </body>
+</html>
+<script>
+
+    $("#btn").submit(function(e) {
+    
+        e.preventDefault(); 
+    
+        var form = $(this);
+    
+        $.ajax({
+            type: "POST",
+            url: "https://api.superstorage.cloud/auth/login/",
+            data: form.serialize(), 
+            success: function(data)
+            {
+                $("#info").html(data["message"]);
+            },
+        });
+    
+    });
+    
+    </script>
